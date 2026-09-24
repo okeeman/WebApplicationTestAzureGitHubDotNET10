@@ -1,6 +1,6 @@
 name: .NET Core CI
 
-on: [push]
+#on: [push]
 
 env:
   AZURE_WEBAPP_NAME: bmi202620260924172211    # Set this to your application's name
