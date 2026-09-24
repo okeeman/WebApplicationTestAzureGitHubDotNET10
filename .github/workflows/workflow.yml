@@ -42,4 +42,4 @@ jobs:
           #package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
           #package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/wwwroot'
           #package: './publish'
-          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
