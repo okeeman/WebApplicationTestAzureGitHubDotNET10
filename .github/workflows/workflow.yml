@@ -5,7 +5,7 @@ on: [push]
 env:
   AZURE_WEBAPP_NAME: bmi202620260924172211    # Set this to your application's name
   #AZURE_WEBAPP_PACKAGE_PATH: '.'              # Set this to the path to your web app project, defaults to the repository root
-  AZURE_WEBAPP_PACKAGE_PATH: '../../WebApplicationTestAzureGitHubDotNET10/wwwroot'
+  AZURE_WEBAPP_PACKAGE_PATH: '../../WebApplicationTestAzureGitHubDotNET10/'
   DOTNET_VERSION: '10.0.x'                    # Set this to the dot net version to use
 
 jobs:
