@@ -5,7 +5,9 @@ on: [push]
 env:
   AZURE_WEBAPP_NAME: bmi202620260924172211    # Set this to your application's name
   #AZURE_WEBAPP_PACKAGE_PATH: '.'              # Set this to the path to your web app project, defaults to the repository root
-  AZURE_WEBAPP_PACKAGE_PATH: '../../WebApplicationTestAzureGitHubDotNET10' # putting wwwroot here doesn't work. try down below.
+  #AZURE_WEBAPP_PACKAGE_PATH: '../../WebApplicationTestAzureGitHubDotNET10' # putting wwwroot here doesn't work. try down below.
+  #AZURE_WEBAPP_PACKAGE_PATH: "WebApplicationTestAzureGitHubDotNET10/WebApplicationTestAzureGitHubDotNET10.csproj"
+  AZURE_WEBAPP_PACKAGE_PATH: '../../'
   DOTNET_VERSION: '10.0.x'                    # Set this to the dot net version to use
 
 jobs:
@@ -28,8 +30,8 @@ jobs:
           dotnet restore
           dotnet build --configuration Release
           # dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' # still has /myapp in it.
-          # dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
-          dotnet publish -c Release --property:PublishDir='./publish'
+          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          #dotnet publish -c Release --property:PublishDir='./publish'
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
@@ -39,4 +41,5 @@ jobs:
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE  }} # Define secret variable in repository settings as per action documentation
           #package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
           #package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/wwwroot'
-          package: './publish'
+          #package: './publish'
+          package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
