@@ -7,7 +7,9 @@ env:
   #AZURE_WEBAPP_PACKAGE_PATH: '.'              # Set this to the path to your web app project, defaults to the repository root
   #AZURE_WEBAPP_PACKAGE_PATH: '../../WebApplicationTestAzureGitHubDotNET10' # putting wwwroot here doesn't work. try down below.
   #AZURE_WEBAPP_PACKAGE_PATH: "WebApplicationTestAzureGitHubDotNET10/WebApplicationTestAzureGitHubDotNET10.csproj"
-  AZURE_WEBAPP_PACKAGE_PATH: '../../'
+  #AZURE_WEBAPP_PACKAGE_PATH: '../../'
+  AZURE_WEBAPP_PACKAGE_PATH: WebApplicationTestAzureGitHubDotNET10\published
+  WORKING_DIRECTORY: WebApplicationTestAzureGitHubDotNET10
   DOTNET_VERSION: '10.0.x'                    # Set this to the dot net version to use
 
 jobs:
@@ -30,8 +32,9 @@ jobs:
           dotnet restore
           dotnet build --configuration Release
           # dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' # still has /myapp in it.
-          dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+          #dotnet publish -c Release --property:PublishDir='${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
           #dotnet publish -c Release --property:PublishDir='./publish'
+          dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
           
       # Deploy to Azure Web apps
       - name: 'Run Azure webapp deploy action using publish profile credentials'
