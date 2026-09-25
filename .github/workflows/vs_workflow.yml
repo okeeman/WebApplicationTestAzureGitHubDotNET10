@@ -1,8 +1,8 @@
 name: Build and deploy .NET Core application to Web App bmi202620260924172211
 on:
-  push:
-    branches:
-    - master
+  #push:
+   #branches:
+   # - master
 permissions:
   id-token: write
   contents: read
