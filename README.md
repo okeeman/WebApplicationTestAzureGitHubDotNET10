@@ -1,1 +1,1 @@
-![Workflow Status](https://github.com/github/docs/actions/workflows/workflow.yml/badge.svg)
+[![.NET Core CI](https://github.com/okeeman/WebApplicationTestAzureGitHubDotNET10/actions/workflows/workflow.yml/badge.svg)](https://github.com/okeeman/WebApplicationTestAzureGitHubDotNET10/actions/workflows/workflow.yml)
